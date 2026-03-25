@@ -1,0 +1,19 @@
+
+<div class="level-content">
+    <h2>
+Level 1: Beginning</h2>
+    <p><%= message %></p>
+
+    <!-- TIP 1: HTML Comment -->
+    <!-- The next tip is waiting at /hidden-path -->
+
+    <p>To continue, look for something that is there but not visible.</p>
+
+    <!-- TIP 2: Hidden HTML element with display:none -->
+    <div style="display: none;" id="clue-display-none" data-next-param="alpha123">
+        Congratulations! You've found the hidden element. The parameter for the next level is: alpha123
+    </div>
+
+    <p>You can also try manipulating the URL to find the next step.</p>
+    <a href="<%= nextLevelPath %>?param=alpha123" style="display: none;">Link to level 2 (hidden)</a>
+</div>

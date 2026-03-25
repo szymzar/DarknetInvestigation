@@ -1,0 +1,33 @@
+
+<div class="level-content">
+    <h2><%= title %></h2>
+    <p><%= message %></p>
+
+    <p>The encrypted hint is located in the LocalStorage settings. Please decrypt it and enter it below.</p>
+
+    <form action="/level5_crypto_challenge" method="POST">
+        <label for="decryptedPassword">Decrypted password:</label><br>
+        <input type="text" id="decryptedPassword" name="decryptedPassword" required><br><br>
+        <button type="submit">Check your password</button>
+    </form>
+
+    <div id="crypto-details">
+       <!-- Details of the encrypted hint will be displayed here by JS -->
+    </div>
+</div>
+
+<script>
+    const encryptedClue = localStorage.getItem('crypto_challenge_encrypted');
+    const decryptionMethod = localStorage.getItem('crypto_challenge_method');
+    const cryptoDetailsDiv = document.getElementById('crypto-details');
+
+    if (encryptedClue && decryptionMethod) {
+        cryptoDetailsDiv.innerHTML = `
+            <p><strong>Encrypted message:</strong> <code>${encryptedClue}</code></p>
+            <p><strong>Decryption method:</strong> <code>${decryptionMethod}</code></p>
+            <p>Good luck decrypting!</p>
+        `;
+    } else {
+        cryptoDetailsDiv.innerHTML = `<p>No encrypted data in LocalStorage. Please ensure you have completed Level 4.</p>`;
+    }
+</script>

@@ -1,0 +1,21 @@
+
+<div class="level-content">
+    <h2>Level 4: Cookies and API Data</h2>
+    <p><%= message %></p>
+
+    <div id="localStorageClueDisplay" style="display: none;"></div>
+
+    <p>Now, to continue, look for the data stored in your browser's LocalStorage. A cryptographic challenge awaits you there!</p>
+    <a href="<%= nextLevelPath %>" style="display: none;">Link to level 5 (hidden)</a>
+</div>
+
+<% if (locals.localStorageClue) { %>
+<script>
+    
+    localStorage.setItem('crypto_challenge_clue', JSON.parse('<%- localStorageClue %>').hint);
+    localStorage.setItem('crypto_challenge_path', JSON.parse('<%- localStorageClue %>').path);
+    localStorage.setItem('crypto_challenge_encrypted', JSON.parse('<%- localStorageClue %>').encrypted);
+    localStorage.setItem('crypto_challenge_method', JSON.parse('<%- localStorageClue %>').method);
+    document.getElementById('localStorageClueDisplay').innerText = 'Clue stored in LocalStorage!';
+</script>
+<% } %>
